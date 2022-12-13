@@ -36,7 +36,7 @@ pipeline {
     stage("Maven Sonarqube") {
       steps {
         script {
-          sh "mvn -f'./pom.xml' sonar:sonar -Dsonar.login=admin -Dsonar.password=Admin -Drevision=${VERSION}"
+          sh "mvn -f'./pom.xml' sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar -Drevision=${VERSION}"
         }
       }
     }
