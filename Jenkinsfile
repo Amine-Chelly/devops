@@ -62,19 +62,18 @@ pipeline {
         }
       }
     }
-    stage('Building Docker Image Spring') {
-      steps {
-        dir('./') {
-          sh 'docker build -t $DOCKER_CREDS_USR/tpgestiondestrainback .'
-        }
-      }
-    }
-  
     stage('Login to DockerHub') {
       steps {
         dir('./') {
           echo DOCKER_CREDS_USR
           sh('docker login -u $DOCKER_CREDS_USR -p $DOCKER_CREDS_PSW')
+        }
+      }
+    }
+    stage('Building Docker Image Spring') {
+      steps {
+        dir('./') {
+          sh 'docker build -t $DOCKER_CREDS_USR/tpgestiondestrainback .'
         }
       }
     }
